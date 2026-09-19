@@ -8,15 +8,11 @@
   "scripts": {
     "build:blog": "node scripts/build-blog.mjs",
     "build:blog:drafts": "node scripts/build-blog.mjs --drafts",
-    "generate:social": "node scripts/generate-social.mjs",
     "serve": "http-server . -p 8080"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.127.0",
     "gray-matter": "^4.0.3",
-    "marked": "^17.0.1",
-    "playwright": "^1.56.1",
-    "zod": "^3.25.0"
+    "marked": "^17.0.1"
   },
   "devDependencies": {
     "http-server": "^14.1.1"
