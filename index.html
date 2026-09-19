@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tower Tactics 3D</title>
-<meta name="description" content="Tower Tactics 3D — tower defense em 3D para Android. Defenda mapas temáticos, do Cemitério Assombrado às Montanhas Nevadas.">
+<meta name="description" content="Tower Tactics 3D — tower defense em 3D para Android. 5 mapas temáticos, torres com ramos de evolução, sem anúncios e sem compras no app.">
 <style>
   :root {
     --bg: #0a0e14;
@@ -147,19 +147,54 @@
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 12px;
   }
-  .shot-placeholder {
+  .shots img {
+    width: 100%;
     aspect-ratio: 9 / 16;
-    background: linear-gradient(160deg, var(--bg-card), var(--bg-card-2));
-    border: 1px dashed var(--border);
+    object-fit: cover;
     border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    display: block;
+  }
+
+  /* maps */
+  .map-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .map-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    background: var(--bg-card-2);
+  }
+  .map-card .map-body { padding: 16px 18px 20px; }
+  .map-card h3 { margin: 0 0 6px; font-size: 1.02rem; }
+  .map-card p { margin: 0; color: var(--text-dim); font-size: 0.88rem; }
+
+  /* trust badges */
+  .trust {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 34px;
+  }
+  .trust-badge {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    font-size: 0.85rem;
     color: var(--text-dim);
-    font-size: 0.75rem;
-    text-align: center;
-    padding: 8px;
   }
+  .trust-badge strong { color: var(--text); font-weight: 600; }
 
   /* cta band */
   .cta-band {
@@ -220,8 +255,25 @@
         <span class="label">App Store<br><small>a planear</small></span>
       </a>
     </div>
+
+    <div class="trust">
+      <span class="trust-badge">🚫 <strong>Sem anúncios</strong></span>
+      <span class="trust-badge">💳 <strong>Sem compras no app</strong></span>
+      <span class="trust-badge">🔒 <strong>Sem coleta de dados</strong></span>
+    </div>
   </div>
 </div>
+
+<section id="trailer" style="padding-top:0;">
+  <div class="section-head">
+    <h2>Trailer</h2>
+    <p>16 segundos, direto do jogo: os 5 mapas, um depois do outro.</p>
+  </div>
+  <video controls muted loop playsinline preload="metadata" poster="app_icon_192.png"
+    style="width:100%;max-width:520px;display:block;margin:0 auto;border-radius:16px;border:1px solid var(--border);background:var(--bg-card);">
+    <source src="trailer.webm" type="video/webm">
+  </video>
+</section>
 
 <section id="features">
   <div class="section-head">
@@ -255,23 +307,43 @@
 <section id="maps">
   <div class="section-head">
     <h2>Mapas</h2>
-    <p>Cenários com identidade visual própria, cada um com seu próprio elenco de ameaças.</p>
+    <p>5 cenários com identidade visual própria, cada um com seu próprio elenco de ameaças.</p>
   </div>
   <div class="features">
-    <div class="feature-card">
-      <span class="emoji">⛰️</span>
-      <h3>Montanha Nevada</h3>
-      <p>Picos gelados, visibilidade reduzida, inimigos adaptados ao frio.</p>
+    <div class="map-card">
+      <img src="shots/map_1_floresta_orc.png" alt="Diorama do mapa Floresta Orc" loading="lazy">
+      <div class="map-body">
+        <h3>Floresta Orc</h3>
+        <p>Onde a campanha começa. Orcs e goblins entre as árvores.</p>
+      </div>
     </div>
-    <div class="feature-card">
-      <span class="emoji">⚰️</span>
-      <h3>Cemitério Assombrado</h3>
-      <p>Mortos-vivos e voadores espectrais rondam entre lápides.</p>
+    <div class="map-card">
+      <img src="shots/map_2_haunted_cemetery.png" alt="Diorama do mapa Haunted Cemetery" loading="lazy">
+      <div class="map-body">
+        <h3>Haunted Cemetery</h3>
+        <p>Mortos-vivos e voadores espectrais rondam entre lápides.</p>
+      </div>
     </div>
-    <div class="feature-card">
-      <span class="emoji">🌋</span>
-      <h3>Vulcão</h3>
-      <p>Terreno hostil, calor extremo, criaturas forjadas na lava.</p>
+    <div class="map-card">
+      <img src="shots/map_3_skeleton_cave.png" alt="Diorama do mapa Skeleton Cave" loading="lazy">
+      <div class="map-body">
+        <h3>Skeleton Cave</h3>
+        <p>Esqueletos numa caverna gelada, fundo do mapa.</p>
+      </div>
+    </div>
+    <div class="map-card">
+      <img src="shots/map_4_hell_vulcan.png" alt="Diorama do mapa Hell Vulcan" loading="lazy">
+      <div class="map-body">
+        <h3>Hell Vulcan</h3>
+        <p>Terreno vulcânico, calor extremo, criaturas forjadas na lava.</p>
+      </div>
+    </div>
+    <div class="map-card">
+      <img src="shots/map_5_snow_mountain.png" alt="Diorama do mapa Snow Mountain" loading="lazy">
+      <div class="map-body">
+        <h3>Snow Mountain</h3>
+        <p>Picos gelados, visibilidade reduzida, inimigos adaptados ao frio.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -279,13 +351,12 @@
 <section id="screenshots">
   <div class="section-head">
     <h2>Screenshots</h2>
-    <p>Capturas em breve.</p>
+    <p>Direto do jogo — hub, torres e resultado de partida.</p>
   </div>
   <div class="shots">
-    <div class="shot-placeholder">screenshot em breve</div>
-    <div class="shot-placeholder">screenshot em breve</div>
-    <div class="shot-placeholder">screenshot em breve</div>
-    <div class="shot-placeholder">screenshot em breve</div>
+    <img src="shots/ui_hub.png" alt="Hub do jogo com o caminho de mapas" loading="lazy">
+    <img src="shots/ui_towers.png" alt="Tela de detalhe de torre, com ramos de evolução" loading="lazy">
+    <img src="shots/ui_victory.png" alt="Tela de vitória com recompensas" loading="lazy">
   </div>
 </section>
 
