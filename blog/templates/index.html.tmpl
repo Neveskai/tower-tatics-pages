@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dev Blog — Tower Tactics 3D</title>
+<meta name="description" content="Posts sobre como Tower Tactics 3D é construído: Godot, pipelines de IA, automação e o processo de dev como um todo.">
+<style>
+  :root {
+    --bg: #0a0e14;
+    --bg-card: #131a24;
+    --bg-card-2: #1a2330;
+    --text: #eef2f6;
+    --text-dim: #93a1b3;
+    --accent: #4f8cff;
+    --accent-2: #ffb454;
+    --border: #26303e;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  a { color: inherit; }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 28px;
+    background: rgba(10,14,20,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.05rem; letter-spacing: 0.02em; text-decoration: none; }
+  .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  .nav-links { display: flex; gap: 26px; font-size: 0.9rem; color: var(--text-dim); }
+  .nav-links a { text-decoration: none; }
+  .nav-links a:hover { color: var(--text); }
+  @media (max-width: 640px) { .nav-links { display: none; } }
+
+  .hero {
+    padding: 70px 24px 30px;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .hero h1 { font-size: clamp(2rem, 5vw, 2.8rem); margin: 0 0 12px; font-weight: 800; letter-spacing: -0.01em; }
+  .hero p { color: var(--text-dim); font-size: 1.05rem; margin: 0; }
+
+  .posts { max-width: 780px; margin: 0 auto; padding: 30px 24px 90px; display: flex; flex-direction: column; gap: 18px; }
+  .post-card {
+    display: block;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 28px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.15s;
+  }
+  .post-card:hover { border-color: var(--accent); }
+  .post-card .date { color: var(--text-dim); font-size: 0.82rem; margin-bottom: 8px; }
+  .post-card h2 { margin: 0 0 8px; font-size: 1.25rem; }
+  .post-card p { margin: 0; color: var(--text-dim); font-size: 0.95rem; }
+  .post-card .tags { margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .post-card .tag { border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px; font-size: 0.75rem; color: var(--text-dim); }
+
+  .empty { text-align: center; color: var(--text-dim); padding: 60px 24px; }
+
+  footer {
+    padding: 28px 24px 40px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    flex-wrap: wrap;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+  footer a { text-decoration: none; color: var(--text-dim); }
+  footer a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="{{ROOT}}index.html">
+    <img src="{{ROOT}}app_icon_192.png" alt="">
+    TOWER TACTICS 3D
+  </a>
+  <div class="nav-links">
+    <a href="{{ROOT}}index.html">Site</a>
+    <a href="index.html">Blog</a>
+    <a href="{{ROOT}}privacy.html">Privacidade</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Dev Blog</h1>
+  <p>Como Tower Tactics 3D é construído: Godot, pipelines de IA, automação e o processo por trás do jogo.</p>
+</div>
+
+<div class="posts">
+  {{POSTS_HTML}}
+</div>
+
+<footer>
+  <span>&copy; 2026 Neveskai</span>
+  <a href="{{ROOT}}privacy.html">Política de Privacidade</a>
+  <a href="mailto:wnevesky@gmail.com">Contato</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+name: Build and deploy site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build blog
+        run: node scripts/build-blog.mjs
+
+      - name: Assemble deployable site
+        run: |
+          mkdir -p _site
+          cp index.html privacy.html app_icon_192.png trailer.webm _site/
+          cp -r shots _site/shots
+          mkdir -p _site/blog
+          cp blog/index.html _site/blog/index.html
+          for dir in blog/*/; do
+            slug="$(basename "$dir")"
+            if [ -f "$dir/index.html" ]; then
+              mkdir -p "_site/blog/$slug"
+              cp "$dir/index.html" "_site/blog/$slug/index.html"
+            fi
+          done
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
