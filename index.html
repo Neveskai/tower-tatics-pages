@@ -3,33 +3,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Política de Privacidade — Tower Tactics 3D</title>
+<title>Tower Tactics 3D</title>
+<meta name="description" content="Tower Tactics 3D — jogo de tower defense em 3D para Android.">
 <style>
-  body { font-family: system-ui, -apple-system, sans-serif; max-width: 700px; margin: 40px auto; padding: 0 20px; line-height: 1.6; color: #222; }
-  h1 { font-size: 1.6rem; }
-  h2 { font-size: 1.1rem; margin-top: 2rem; }
-  footer { margin-top: 3rem; font-size: 0.85rem; color: #666; }
+  :root {
+    --bg: #0d1117;
+    --bg-card: #161b22;
+    --text: #e6edf3;
+    --text-dim: #8b949e;
+    --accent: #4f8cff;
+    --border: #30363d;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 20px 80px;
+  }
+  header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  header img {
+    width: 88px;
+    height: 88px;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  }
+  h1 { font-size: 1.8rem; margin: 0 0 4px; }
+  .tagline { color: var(--text-dim); margin: 0; font-size: 1rem; }
+  .badge {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text-dim);
+  }
+  section { margin-bottom: 36px; }
+  h2 { font-size: 1.1rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
+  p { color: var(--text); }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+  }
+  .cta-note { margin-top: 8px; font-size: 0.85rem; color: var(--text-dim); }
+  .shots {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+  }
+  .shot-placeholder {
+    aspect-ratio: 9 / 16;
+    background: var(--bg-card);
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    text-align: center;
+    padding: 8px;
+  }
+  footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  footer a { color: var(--text-dim); }
+  a { color: var(--accent); }
 </style>
 </head>
 <body>
-<h1>Política de Privacidade — Tower Tactics 3D</h1>
-<p>Última atualização: 18 de setembro de 2026.</p>
+<div class="wrap">
 
-<h2>Resumo</h2>
-<p>Tower Tactics 3D não coleta, armazena, processa ou compartilha dados pessoais ou de identificação dos utilizadores. O jogo não requer conexão à internet para funcionar e não solicita nenhuma permissão de acesso a dados do dispositivo (localização, câmera, contactos, armazenamento, etc.).</p>
+  <header>
+    <img src="app_icon_192.png" alt="Ícone Tower Tactics 3D">
+    <div>
+      <h1>Tower Tactics 3D</h1>
+      <p class="tagline">Tower defense em 3D, direto no seu Android.</p>
+      <span class="badge">Em breve na Play Store</span>
+    </div>
+  </header>
 
-<h2>Dados coletados</h2>
-<p>Nenhum. O aplicativo não possui sistema de contas, login, telemetria, analytics ou publicidade. Todo o progresso do jogador é guardado localmente no próprio dispositivo.</p>
+  <section>
+    <h2>Sobre o jogo</h2>
+    <p>
+      Tower Tactics 3D é um jogo de estratégia e defesa de torres com cenários totalmente em 3D.
+      Posicione suas torres, enfrente ondas de monstros e domine mapas com temas únicos —
+      de cemitérios assombrados a picos nevados.
+    </p>
+  </section>
 
-<h2>Compartilhamento de dados</h2>
-<p>Como nenhum dado é coletado, nenhum dado é compartilhado com terceiros.</p>
+  <section>
+    <h2>Disponibilidade</h2>
+    <a class="cta" href="#">Disponível no Google Play</a>
+    <p class="cta-note">Link ativo assim que a versão de produção for publicada.</p>
+  </section>
 
-<h2>Alterações a esta política</h2>
-<p>Caso funcionalidades futuras passem a envolver coleta de dados (ex.: sincronização em nuvem, anúncios), esta política será atualizada com antecedência e a nova versão será publicada nesta mesma página.</p>
+  <section>
+    <h2>Screenshots</h2>
+    <div class="shots">
+      <div class="shot-placeholder">screenshot em breve</div>
+      <div class="shot-placeholder">screenshot em breve</div>
+      <div class="shot-placeholder">screenshot em breve</div>
+    </div>
+  </section>
 
-<h2>Contato</h2>
-<p>Dúvidas sobre esta política: <a href="mailto:wnevesky@gmail.com">wnevesky@gmail.com</a></p>
+  <footer>
+    <span>&copy; 2026 Neveskai</span>
+    <a href="https://neveskai.github.io/tower-tatics-pages/privacy.html">Política de Privacidade</a>
+    <a href="mailto:wnevesky@gmail.com">Contato</a>
+  </footer>
 
-<footer>Tower Tactics 3D — desenvolvido por Neveskai.</footer>
+</div>
 </body>
 </html>
