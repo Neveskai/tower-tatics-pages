@@ -1,4 +1,3 @@
-import { createHash } from "node:crypto";
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
@@ -6,7 +5,6 @@ import matter from "gray-matter";
 const REPO_ROOT = path.resolve(import.meta.dirname, "..", "..");
 export const POSTS_DIR = path.join(REPO_ROOT, "blog", "posts");
 export const BLOG_OUT_DIR = path.join(REPO_ROOT, "blog");
-export const SOCIAL_OUT_DIR = path.join(REPO_ROOT, "blog", "social");
 
 // Filenames look like YYYY-MM-DD-some-slug.md. The date prefix keeps
 // directory listings/git log in chronological order; the actual slug
@@ -34,8 +32,7 @@ function validateFrontmatter(data, filename) {
   }
 }
 
-// Reads and parses every *.md file in blog/posts/. Returns objects with both
-// the raw source (for hashing) and parsed frontmatter/body.
+// Reads and parses every *.md file in blog/posts/.
 export function loadPosts({ includeDrafts = false } = {}) {
   const filenames = readdirSync(POSTS_DIR).filter((f) => f.endsWith(".md"));
 
@@ -50,7 +47,6 @@ export function loadPosts({ includeDrafts = false } = {}) {
     return {
       filename,
       filePath,
-      raw,
       slug,
       title: data.title,
       date: new Date(data.date),
@@ -65,12 +61,4 @@ export function loadPosts({ includeDrafts = false } = {}) {
 
   const filtered = includeDrafts ? posts : posts.filter((p) => !p.draft);
   return filtered.sort((a, b) => b.date - a.date);
-}
-
-export function sourceHash(post) {
-  return createHash("sha256").update(post.raw).digest("hex");
-}
-
-export function socialDirFor(slug) {
-  return path.join(SOCIAL_OUT_DIR, slug);
 }
