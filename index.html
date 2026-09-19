@@ -4,17 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tower Tactics 3D</title>
-<meta name="description" content="Tower Tactics 3D — jogo de tower defense em 3D para Android.">
+<meta name="description" content="Tower Tactics 3D — tower defense em 3D para Android. Defenda mapas temáticos, do Cemitério Assombrado às Montanhas Nevadas.">
 <style>
   :root {
-    --bg: #0d1117;
-    --bg-card: #161b22;
-    --text: #e6edf3;
-    --text-dim: #8b949e;
+    --bg: #0a0e14;
+    --bg-card: #131a24;
+    --bg-card-2: #1a2330;
+    --text: #eef2f6;
+    --text-dim: #93a1b3;
     --accent: #4f8cff;
-    --border: #30363d;
+    --accent-2: #ffb454;
+    --border: #26303e;
   }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -22,62 +25,133 @@
     color: var(--text);
     line-height: 1.6;
   }
-  .wrap {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 48px 20px 80px;
-  }
-  header {
+  a { color: inherit; }
+
+  /* nav */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     display: flex;
     align-items: center;
-    gap: 20px;
-    margin-bottom: 32px;
+    justify-content: space-between;
+    padding: 14px 28px;
+    background: rgba(10,14,20,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
   }
-  header img {
-    width: 88px;
-    height: 88px;
-    border-radius: 20px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-  }
-  h1 { font-size: 1.8rem; margin: 0 0 4px; }
-  .tagline { color: var(--text-dim); margin: 0; font-size: 1rem; }
-  .badge {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 4px 10px;
-    font-size: 0.75rem;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    color: var(--text-dim);
-  }
-  section { margin-bottom: 36px; }
-  h2 { font-size: 1.1rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px; }
-  p { color: var(--text); }
-  .cta {
-    display: inline-flex;
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.05rem; letter-spacing: 0.02em; text-decoration: none; }
+  .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  .nav-links { display: flex; gap: 26px; font-size: 0.9rem; color: var(--text-dim); }
+  .nav-links a { text-decoration: none; }
+  .nav-links a:hover { color: var(--text); }
+  @media (max-width: 640px) { .nav-links { display: none; } }
+
+  /* hero */
+  .hero {
+    position: relative;
+    min-height: 78vh;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 8px;
-    background: var(--accent);
-    color: #fff;
-    text-decoration: none;
-    padding: 12px 22px;
-    border-radius: 10px;
-    font-weight: 600;
-    opacity: 0.5;
-    cursor: default;
-    pointer-events: none;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(79,140,255,0.18), transparent 55%),
+      radial-gradient(ellipse at 75% 70%, rgba(255,90,60,0.14), transparent 50%),
+      linear-gradient(180deg, #0a0e14 0%, #0d1420 55%, #0a0e14 100%);
+    overflow: hidden;
   }
-  .cta-note { margin-top: 8px; font-size: 0.85rem; color: var(--text-dim); }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(79,140,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79,140,255,0.05) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 680px; }
+  .hero img.icon {
+    width: 96px;
+    height: 96px;
+    border-radius: 22px;
+    box-shadow: 0 8px 30px rgba(79,140,255,0.35);
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    margin: 0 0 12px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .hero .tagline {
+    color: var(--text-dim);
+    font-size: 1.1rem;
+    margin: 0 0 34px;
+  }
+
+  /* store badges */
+  .stores {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+  }
+  .store-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 22px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text);
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .store-btn.active { border-color: var(--accent); }
+  .store-btn.active:hover { transform: translateY(-2px); }
+  .store-btn.disabled { color: var(--text-dim); cursor: default; opacity: 0.55; }
+  .store-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+  .store-btn .label small { display: block; font-weight: 400; font-size: 0.7rem; color: var(--text-dim); }
+
+  section { max-width: 960px; margin: 0 auto; padding: 70px 24px; }
+  .section-head { text-align: center; margin-bottom: 40px; }
+  .section-head h2 { font-size: 1.7rem; margin: 0 0 8px; }
+  .section-head p { color: var(--text-dim); margin: 0; max-width: 520px; margin-inline: auto; }
+
+  /* features */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+  }
+  .feature-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .feature-card .emoji { font-size: 1.8rem; display: block; margin-bottom: 12px; }
+  .feature-card h3 { margin: 0 0 8px; font-size: 1.05rem; }
+  .feature-card p { margin: 0; color: var(--text-dim); font-size: 0.92rem; }
+
+  /* screenshots */
   .shots {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
   }
   .shot-placeholder {
     aspect-ratio: 9 / 16;
-    background: var(--bg-card);
+    background: linear-gradient(160deg, var(--bg-card), var(--bg-card-2));
     border: 1px dashed var(--border);
-    border-radius: 10px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,63 +160,149 @@
     text-align: center;
     padding: 8px;
   }
-  footer {
-    margin-top: 60px;
-    padding-top: 20px;
+
+  /* cta band */
+  .cta-band {
+    text-align: center;
+    padding: 70px 24px;
+    background: linear-gradient(135deg, rgba(79,140,255,0.12), rgba(255,90,60,0.08));
     border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .cta-band h2 { margin: 0 0 22px; font-size: 1.6rem; }
+
+  footer {
+    padding: 28px 24px 40px;
     color: var(--text-dim);
     font-size: 0.85rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 22px;
     flex-wrap: wrap;
-    gap: 10px;
+    text-align: center;
   }
-  footer a { color: var(--text-dim); }
-  a { color: var(--accent); }
+  footer a { text-decoration: none; color: var(--text-dim); }
+  footer a:hover { color: var(--text); }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <header>
-    <img src="app_icon_192.png" alt="Ícone Tower Tactics 3D">
-    <div>
-      <h1>Tower Tactics 3D</h1>
-      <p class="tagline">Tower defense em 3D, direto no seu Android.</p>
-      <span class="badge">Em breve na Play Store</span>
+<nav>
+  <a class="brand" href="#top">
+    <img src="app_icon_192.png" alt="">
+    TOWER TACTICS 3D
+  </a>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#maps">Mapas</a>
+    <a href="#screenshots">Screenshots</a>
+    <a href="privacy.html">Privacidade</a>
+  </div>
+</nav>
+
+<div class="hero" id="top">
+  <div class="hero-content">
+    <img class="icon" src="app_icon_192.png" alt="Ícone Tower Tactics 3D">
+    <h1>TOWER TACTICS 3D</h1>
+    <p class="tagline">Tower defense em 3D. Posicione, evolua, resista à horda.</p>
+
+    <div class="stores">
+      <a class="store-btn disabled" aria-disabled="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3l10.5 9L3 21V3z"/><path d="M15 10l4.5-2.5L21 12l-1.5 4.5L15 14l-2-2z" opacity="0.5"/></svg>
+        <span class="label">Em breve no<br><strong>Google Play</strong></span>
+      </a>
+      <a class="store-btn disabled" aria-disabled="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5z" opacity="0.5"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" opacity="0.3"/></svg>
+        <span class="label">Steam<br><small>a planear</small></span>
+      </a>
+      <a class="store-btn disabled" aria-disabled="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 2c.1 1.1-.3 2.2-1 3-.7.8-1.9 1.5-3 1.4-.1-1.1.4-2.2 1-3 .8-.8 2-1.4 3-1.4zM20.8 17c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.3 3.4-4 3.4-1.5 0-1.9-1-3.9-1s-2.5 1-4 1c-1.7 0-3-1.7-4-3.2C1.5 17 .8 12.5 2.9 9.4c1-1.5 2.6-2.5 4.2-2.5 1.6 0 2.6 1.1 3.9 1.1s2.1-1.1 4-1.1c1.4 0 2.9.8 3.9 2.1-3.4 1.9-2.9 6.8 1.9 8" opacity="0.5"/></svg>
+        <span class="label">App Store<br><small>a planear</small></span>
+      </a>
     </div>
-  </header>
-
-  <section>
-    <h2>Sobre o jogo</h2>
-    <p>
-      Tower Tactics 3D é um jogo de estratégia e defesa de torres com cenários totalmente em 3D.
-      Posicione suas torres, enfrente ondas de monstros e domine mapas com temas únicos —
-      de cemitérios assombrados a picos nevados.
-    </p>
-  </section>
-
-  <section>
-    <h2>Disponibilidade</h2>
-    <a class="cta" href="#">Disponível no Google Play</a>
-    <p class="cta-note">Link ativo assim que a versão de produção for publicada.</p>
-  </section>
-
-  <section>
-    <h2>Screenshots</h2>
-    <div class="shots">
-      <div class="shot-placeholder">screenshot em breve</div>
-      <div class="shot-placeholder">screenshot em breve</div>
-      <div class="shot-placeholder">screenshot em breve</div>
-    </div>
-  </section>
-
-  <footer>
-    <span>&copy; 2026 Neveskai</span>
-    <a href="https://neveskai.github.io/tower-tatics-pages/privacy.html">Política de Privacidade</a>
-    <a href="mailto:wnevesky@gmail.com">Contato</a>
-  </footer>
-
+  </div>
 </div>
+
+<section id="features">
+  <div class="section-head">
+    <h2>Sobre o jogo</h2>
+    <p>Estratégia clássica de defesa de torres, construída do zero em 3D.</p>
+  </div>
+  <div class="features">
+    <div class="feature-card">
+      <span class="emoji">🏰</span>
+      <h3>Ramos de torre</h3>
+      <p>Evolua cada torre por caminhos diferentes, adaptando a build a cada onda.</p>
+    </div>
+    <div class="feature-card">
+      <span class="emoji">👹</span>
+      <h3>Monstros por mapa</h3>
+      <p>Cada cenário traz inimigos com visual e comportamento próprios — nada de reciclagem genérica.</p>
+    </div>
+    <div class="feature-card">
+      <span class="emoji">📈</span>
+      <h3>Progressão de conta</h3>
+      <p>Suba de nível fora das partidas e desbloqueie melhorias permanentes.</p>
+    </div>
+    <div class="feature-card">
+      <span class="emoji">📱</span>
+      <h3>Feito pra mobile</h3>
+      <p>Performance otimizada para rodar bem em aparelhos Android médios.</p>
+    </div>
+  </div>
+</section>
+
+<section id="maps">
+  <div class="section-head">
+    <h2>Mapas</h2>
+    <p>Cenários com identidade visual própria, cada um com seu próprio elenco de ameaças.</p>
+  </div>
+  <div class="features">
+    <div class="feature-card">
+      <span class="emoji">⛰️</span>
+      <h3>Montanha Nevada</h3>
+      <p>Picos gelados, visibilidade reduzida, inimigos adaptados ao frio.</p>
+    </div>
+    <div class="feature-card">
+      <span class="emoji">⚰️</span>
+      <h3>Cemitério Assombrado</h3>
+      <p>Mortos-vivos e voadores espectrais rondam entre lápides.</p>
+    </div>
+    <div class="feature-card">
+      <span class="emoji">🌋</span>
+      <h3>Vulcão</h3>
+      <p>Terreno hostil, calor extremo, criaturas forjadas na lava.</p>
+    </div>
+  </div>
+</section>
+
+<section id="screenshots">
+  <div class="section-head">
+    <h2>Screenshots</h2>
+    <p>Capturas em breve.</p>
+  </div>
+  <div class="shots">
+    <div class="shot-placeholder">screenshot em breve</div>
+    <div class="shot-placeholder">screenshot em breve</div>
+    <div class="shot-placeholder">screenshot em breve</div>
+    <div class="shot-placeholder">screenshot em breve</div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <h2>Fique de olho no lançamento</h2>
+  <div class="stores">
+    <a class="store-btn disabled" aria-disabled="true">
+      <span class="label">Em breve no<br><strong>Google Play</strong></span>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <span>&copy; 2026 Neveskai</span>
+  <a href="privacy.html">Política de Privacidade</a>
+  <a href="mailto:wnevesky@gmail.com">Contato</a>
+</footer>
+
 </body>
 </html>
