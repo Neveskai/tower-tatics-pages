@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+  :root {
+    --bg: #0a0e14;
+    --text: #eef2f6;
+    --text-dim: #93a1b3;
+    --accent: #4f8cff;
+    --accent-2: #ffb454;
+    --border: #26303e;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    width: 1200px;
+    height: 630px;
+    background: var(--bg);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: var(--text);
+    overflow: hidden;
+  }
+  .card {
+    position: relative;
+    width: 1200px;
+    height: 630px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 90px;
+    background:
+      radial-gradient(ellipse at 20% 15%, rgba(79,140,255,0.22), transparent 55%),
+      radial-gradient(ellipse at 85% 85%, rgba(255,90,60,0.16), transparent 50%),
+      linear-gradient(180deg, #0a0e14 0%, #0d1420 55%, #0a0e14 100%);
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(79,140,255,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79,140,255,0.06) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+  .content { position: relative; z-index: 1; max-width: 940px; }
+  .kicker {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--text-dim);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .kicker img { width: 40px; height: 40px; border-radius: 10px; }
+  h1 {
+    font-size: 54px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0 0 22px;
+  }
+  p.summary {
+    font-size: 26px;
+    color: var(--text-dim);
+    line-height: 1.45;
+    margin: 0;
+    max-width: 880px;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="content">
+      <div class="kicker">
+        <img src="{{ICON_DATA_URI}}" alt="">
+        Tower Tactics 3D — Dev Blog
+      </div>
+      <h1>{{TITLE}}</h1>
+      <p class="summary">{{SUMMARY}}</p>
+    </div>
+  </div>
+</body>
+</html>

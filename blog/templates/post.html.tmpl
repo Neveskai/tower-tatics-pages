@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{TITLE}} — Tower Tactics 3D Dev Blog</title>
+<meta name="description" content="{{SUMMARY}}">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{SUMMARY}}">
+<meta property="og:image" content="{{OG_IMAGE}}">
+<meta property="og:type" content="article">
+<style>
+  :root {
+    --bg: #0a0e14;
+    --bg-card: #131a24;
+    --bg-card-2: #1a2330;
+    --text: #eef2f6;
+    --text-dim: #93a1b3;
+    --accent: #4f8cff;
+    --accent-2: #ffb454;
+    --border: #26303e;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  a { color: var(--accent); }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 28px;
+    background: rgba(10,14,20,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.05rem; letter-spacing: 0.02em; text-decoration: none; color: var(--text); }
+  .brand img { width: 32px; height: 32px; border-radius: 8px; }
+  .nav-links { display: flex; gap: 26px; font-size: 0.9rem; color: var(--text-dim); }
+  .nav-links a { text-decoration: none; color: var(--text-dim); }
+  .nav-links a:hover { color: var(--text); }
+  @media (max-width: 640px) { .nav-links { display: none; } }
+
+  article { max-width: 720px; margin: 0 auto; padding: 60px 24px 90px; }
+  .post-header { margin-bottom: 40px; }
+  .post-header .kicker { color: var(--text-dim); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+  .post-header h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 0 0 14px; font-weight: 800; letter-spacing: -0.01em; }
+  .post-header .meta { color: var(--text-dim); font-size: 0.92rem; display: flex; gap: 14px; flex-wrap: wrap; }
+  .post-header .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+  .post-header .tag { border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; font-size: 0.78rem; color: var(--text-dim); }
+
+  .post-body h2 { font-size: 1.4rem; margin: 40px 0 14px; }
+  .post-body h3 { font-size: 1.15rem; margin: 30px 0 12px; }
+  .post-body p { margin: 0 0 18px; }
+  .post-body ul, .post-body ol { margin: 0 0 18px; padding-left: 22px; }
+  .post-body li { margin-bottom: 8px; }
+  .post-body code { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 2px 6px; font-size: 0.88em; }
+  .post-body pre { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; overflow-x: auto; margin: 0 0 22px; }
+  .post-body pre code { background: none; border: none; padding: 0; }
+  .post-body blockquote { border-left: 3px solid var(--accent); margin: 0 0 18px; padding: 4px 0 4px 18px; color: var(--text-dim); }
+  .post-body img { max-width: 100%; border-radius: 12px; border: 1px solid var(--border); }
+  .post-body a { text-decoration: underline; text-decoration-color: var(--border); }
+  .post-body a:hover { text-decoration-color: var(--accent); }
+
+  .back-link { display: inline-block; margin-top: 50px; color: var(--text-dim); text-decoration: none; font-size: 0.9rem; }
+  .back-link:hover { color: var(--text); }
+
+  footer {
+    padding: 28px 24px 40px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    flex-wrap: wrap;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+  footer a { text-decoration: none; color: var(--text-dim); }
+  footer a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="brand" href="{{ROOT}}index.html">
+    <img src="{{ROOT}}app_icon_192.png" alt="">
+    TOWER TACTICS 3D
+  </a>
+  <div class="nav-links">
+    <a href="{{ROOT}}index.html">Site</a>
+    <a href="{{BLOG_INDEX}}">Blog</a>
+    <a href="{{ROOT}}privacy.html">Privacidade</a>
+  </div>
+</nav>
+
+<article>
+  <div class="post-header">
+    <div class="kicker">Tower Tactics 3D — Dev Blog</div>
+    <h1>{{TITLE}}</h1>
+    <div class="meta">
+      <span>{{DATE_HUMAN}}</span>
+    </div>
+    <div class="tags">{{TAGS_HTML}}</div>
+  </div>
+  <div class="post-body">
+    {{CONTENT}}
+  </div>
+  <a class="back-link" href="{{BLOG_INDEX}}">&larr; Voltar para o blog</a>
+</article>
+
+<footer>
+  <span>&copy; 2026 Neveskai</span>
+  <a href="{{ROOT}}privacy.html">Política de Privacidade</a>
+  <a href="mailto:wnevesky@gmail.com">Contato</a>
+</footer>
+
+</body>
+</html>
