@@ -57,23 +57,22 @@
     justify-content: center;
     text-align: center;
     padding: 60px 20px;
-    background:
-      radial-gradient(ellipse at 30% 20%, rgba(79,140,255,0.18), transparent 55%),
-      radial-gradient(ellipse at 75% 70%, rgba(255,90,60,0.14), transparent 50%),
-      linear-gradient(180deg, #0a0e14 0%, #0d1420 55%, #0a0e14 100%);
+    background: #0a0e14 url("img/bg_night_wide.webp") center 35% / cover no-repeat;
     overflow: hidden;
   }
+  /* Arte do loading do jogo (cemitério à noite); o véu escurece o centro e funde com a página em baixo. */
   .hero::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-image:
-      linear-gradient(rgba(79,140,255,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(79,140,255,0.05) 1px, transparent 1px);
-    background-size: 42px 42px;
-    mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+    background:
+      radial-gradient(ellipse at center 45%, rgba(10,14,20,0.55), rgba(10,14,20,0.2) 70%),
+      linear-gradient(180deg, rgba(10,14,20,0.35) 0%, transparent 30%, rgba(10,14,20,0.4) 75%, var(--bg) 100%);
   }
-  .hero-content { position: relative; z-index: 1; max-width: 680px; }
+  @media (max-aspect-ratio: 1/1) {
+    .hero { background-image: url("img/bg_night_tall.webp"); background-position: center 30%; }
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 680px; text-shadow: 0 2px 12px rgba(0,0,0,0.6); }
   .hero img.icon {
     width: 96px;
     height: 96px;
@@ -88,7 +87,7 @@
     letter-spacing: -0.01em;
   }
   .hero .tagline {
-    color: var(--text-dim);
+    color: #d3dbe6;
     font-size: 1.1rem;
     margin: 0 0 34px;
   }
@@ -116,7 +115,7 @@
   }
   .store-btn.active { border-color: var(--accent); }
   .store-btn.active:hover { transform: translateY(-2px); }
-  .store-btn.disabled { color: var(--text-dim); cursor: default; opacity: 0.55; }
+  .store-btn.disabled { color: var(--text-dim); cursor: default; background: rgba(19,26,36,0.88); }
   .store-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
   .store-btn .label small { display: block; font-weight: 400; font-size: 0.7rem; color: var(--text-dim); }
 
@@ -352,11 +351,13 @@
 <section id="screenshots">
   <div class="section-head">
     <h2>Screenshots</h2>
-    <p>Direto do jogo — hub, torres e resultado de partida.</p>
+    <p>Direto do jogo — hub, partida, torres e skills.</p>
   </div>
   <div class="shots">
-    <img src="shots/ui_hub.png" alt="Hub do jogo com o caminho de mapas" loading="lazy">
-    <img src="shots/ui_towers.png" alt="Tela de detalhe de torre, com ramos de evolução" loading="lazy">
+    <img src="img/shot_play.webp" alt="Hub do jogo com a ilha do mapa Orc Forest" loading="lazy">
+    <img src="img/shot_ingame.webp" alt="Partida em andamento, com torres e a horda no tabuleiro" loading="lazy">
+    <img src="img/shot_towers.webp" alt="Aba de torres: Ballista, Catapult, AA e Laser" loading="lazy">
+    <img src="img/shot_skills.webp" alt="Aba de skills: Stun, Bleed, True Sight e Empower" loading="lazy">
     <img src="shots/ui_victory.png" alt="Tela de vitória com recompensas" loading="lazy">
   </div>
 </section>
