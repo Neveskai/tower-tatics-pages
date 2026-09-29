@@ -41,6 +41,7 @@ jobs:
           mkdir -p _site
           cp index.html privacy.html app_icon_192.png trailer.webm _site/
           cp -r shots _site/shots
+          cp -r img _site/img
           mkdir -p _site/blog
           cp blog/index.html _site/blog/index.html
           for dir in blog/*/; do
