@@ -62,10 +62,10 @@
     justify-content: center;
     text-align: center;
     padding: 60px 20px;
-    background: #0a0e14 url("img/bg_night_wide.webp") center 35% / cover no-repeat;
+    background: #0a0e14 url("img/piggy_hero_landscape.png") center 35% / cover no-repeat;
     overflow: hidden;
   }
-  /* Arte do loading do jogo (cemitério à noite); o véu escurece o centro e funde com a página em baixo. */
+  /* Hero art Piggy contra a horda; o véu mantém a leitura do conteúdo e funde com a página. */
   .hero::before {
     content: "";
     position: absolute;
@@ -75,7 +75,7 @@
       linear-gradient(180deg, rgba(10,14,20,0.35) 0%, transparent 30%, rgba(10,14,20,0.4) 75%, var(--bg) 100%);
   }
   @media (max-aspect-ratio: 1/1) {
-    .hero { background-image: url("img/bg_night_tall.webp"); background-position: center 30%; }
+    .hero { background-image: url("img/piggy_hero_portrait.png"); background-position: center 30%; }
   }
   .hero-content { position: relative; z-index: 1; max-width: 680px; text-shadow: 0 2px 12px rgba(0,0,0,0.6); }
   .hero img.icon {
