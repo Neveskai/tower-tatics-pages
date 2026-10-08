@@ -3,8 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tower Tactics 3D</title>
-<meta name="description" content="Tower Tactics 3D — tower defense em 3D para Android. 5 mapas temáticos, torres com ramos de evolução, sem anúncios e sem compras no app.">
+<title>Piggy Contra o Mundo</title>
+<link rel="icon" href="app_icon_192.png" type="image/png">
+<meta property="og:title" content="Piggy Contra o Mundo">
+<meta property="og:description" content="Tower defense em 3D. Posicione, evolua, resista à horda.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://neveskai.github.io/tower-tatics-pages/img/feature_graphic.png">
+<meta name="description" content="Piggy Contra o Mundo — tower defense em 3D para Android. 5 mapas temáticos, torres com ramos de evolução, sem anúncios e sem compras no app.">
 <style>
   :root {
     --bg: #0a0e14;
@@ -86,6 +91,7 @@
     font-weight: 800;
     letter-spacing: -0.01em;
   }
+  .hero .game-title { display: block; width: 100%; max-width: 560px; height: auto; margin: 0 auto; }
   .hero .tagline {
     color: #d3dbe6;
     font-size: 1.1rem;
@@ -148,6 +154,7 @@
   }
   .shots img {
     width: 100%;
+    height: auto;
     aspect-ratio: 9 / 16;
     object-fit: cover;
     border-radius: 14px;
@@ -224,7 +231,7 @@
 <nav>
   <a class="brand" href="#top">
     <img src="app_icon_192.png" alt="">
-    TOWER TACTICS 3D
+    PIGGY CONTRA O MUNDO
   </a>
   <div class="nav-links">
     <a href="#features">Features</a>
@@ -237,8 +244,8 @@
 
 <div class="hero" id="top">
   <div class="hero-content">
-    <img class="icon" src="app_icon_192.png" alt="Ícone Tower Tactics 3D">
-    <h1>TOWER TACTICS 3D</h1>
+    <img class="icon" src="app_icon_192.png" alt="Ícone Piggy Contra o Mundo">
+    <h1><img class="game-title" src="img/game_title.webp" alt="Piggy Contra o Mundo" width="806" height="364"></h1>
     <p class="tagline">Tower defense em 3D. Posicione, evolua, resista à horda.</p>
 
     <div class="stores">
@@ -269,7 +276,7 @@
     <h2>Trailer</h2>
     <p>16 segundos, direto do jogo: os 5 mapas, um depois do outro.</p>
   </div>
-  <video controls muted loop playsinline preload="metadata" poster="app_icon_192.png"
+  <video controls muted loop playsinline preload="metadata" poster="img/feature_graphic.webp"
     style="width:100%;max-width:520px;display:block;margin:0 auto;border-radius:16px;border:1px solid var(--border);background:var(--bg-card);">
     <source src="trailer.webm" type="video/webm">
   </video>
@@ -311,35 +318,35 @@
   </div>
   <div class="features">
     <div class="map-card">
-      <img src="shots/map_1_floresta_orc.png" alt="Diorama do mapa Floresta Orc" loading="lazy">
+      <img src="img/map_forest.webp" alt="Diorama do mapa Floresta Orc" loading="lazy">
       <div class="map-body">
         <h3>Floresta Orc</h3>
         <p>Onde a campanha começa. Orcs e goblins entre as árvores.</p>
       </div>
     </div>
     <div class="map-card">
-      <img src="shots/map_2_haunted_cemetery.png" alt="Diorama do mapa Haunted Cemetery" loading="lazy">
+      <img src="img/map_cemetery.webp" alt="Diorama do mapa Haunted Cemetery" loading="lazy">
       <div class="map-body">
         <h3>Haunted Cemetery</h3>
         <p>Mortos-vivos e voadores espectrais rondam entre lápides.</p>
       </div>
     </div>
     <div class="map-card">
-      <img src="shots/map_3_skeleton_cave.png" alt="Diorama do mapa Skeleton Cave" loading="lazy">
+      <img src="img/map_cave.webp" alt="Diorama do mapa Skeleton Cave" loading="lazy">
       <div class="map-body">
         <h3>Skeleton Cave</h3>
         <p>Esqueletos numa caverna gelada, fundo do mapa.</p>
       </div>
     </div>
     <div class="map-card">
-      <img src="shots/map_4_hell_vulcan.png" alt="Diorama do mapa Hell Vulcan" loading="lazy">
+      <img src="img/map_hell.webp" alt="Diorama do mapa Hell Vulcan" loading="lazy">
       <div class="map-body">
         <h3>Hell Vulcan</h3>
         <p>Terreno vulcânico, calor extremo, criaturas forjadas na lava.</p>
       </div>
     </div>
     <div class="map-card">
-      <img src="shots/map_5_snow_mountain.png" alt="Diorama do mapa Snow Mountain" loading="lazy">
+      <img src="img/map_snow.webp" alt="Diorama do mapa Snow Mountain" loading="lazy">
       <div class="map-body">
         <h3>Snow Mountain</h3>
         <p>Picos gelados, visibilidade reduzida, inimigos adaptados ao frio.</p>
@@ -351,15 +358,21 @@
 <section id="screenshots">
   <div class="section-head">
     <h2>Screenshots</h2>
-    <p>Direto do jogo — hub, partida, torres e skills.</p>
+    <p>Direto do jogo — os 5 mapas, torres, habilidades, status e cartas.</p>
   </div>
   <div class="shots">
-    <img src="img/shot_play.webp" alt="Hub do jogo com a ilha do mapa Orc Forest" loading="lazy">
-    <img src="img/shot_ingame.webp" alt="Partida em andamento, com torres e a horda no tabuleiro" loading="lazy">
-    <img src="img/shot_towers.webp" alt="Aba de torres: Ballista, Catapult, AA e Laser" loading="lazy">
-    <img src="img/shot_skills.webp" alt="Aba de skills: Stun, Bleed, True Sight e Empower" loading="lazy">
-    <img src="img/shot_stats.webp" alt="Aba de stats: nível da conta, vida, ouro por segundo e ouro inicial" loading="lazy">
-    <img src="shots/ui_victory.png" alt="Tela de vitória com recompensas" loading="lazy">
+    <img src="img/shot_play.webp" alt="Hub do jogo com a ilha do mapa Floresta Orc" width="720" height="1280" loading="lazy">
+    <img src="img/shot_ingame_forest.webp" alt="Partida na Floresta Orc" width="720" height="1280" loading="lazy">
+    <img src="img/shot_ingame_cemetery.webp" alt="Partida no Cemitério Assombrado" width="720" height="1280" loading="lazy">
+    <img src="img/shot_ingame_cave.webp" alt="Partida na Caverna dos Esqueletos" width="720" height="1280" loading="lazy">
+    <img src="img/shot_ingame_hell.webp" alt="Partida no Vulcão Infernal" width="720" height="1280" loading="lazy">
+    <img src="img/shot_ingame_snow.webp" alt="Partida na Montanha Nevada" width="720" height="1280" loading="lazy">
+    <img src="img/shot_towers.webp" alt="Coleção de torres: Balista e Catapulta" width="720" height="1280" loading="lazy">
+    <img src="img/shot_tower_detail.webp" alt="Detalhes e evolução de uma torre" width="720" height="1280" loading="lazy">
+    <img src="img/shot_skills.webp" alt="Coleção de habilidades do jogador" width="720" height="1280" loading="lazy">
+    <img src="img/shot_stats.webp" alt="Status e melhorias permanentes da conta" width="720" height="1280" loading="lazy">
+    <img src="img/shot_cards.webp" alt="Coleção de cartas de inimigos" width="720" height="1280" loading="lazy">
+    <img src="img/shot_card_detail.webp" alt="Detalhes de uma carta de inimigo" width="720" height="1280" loading="lazy">
   </div>
 </section>
 
