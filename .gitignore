@@ -5,3 +5,7 @@ node_modules/
 # every deploy, so they don't need to live in git history.
 /blog/index.html
 /blog/*/index.html
+
+# Generated English blog and deploy artifact
+/en/blog/
+/_site/

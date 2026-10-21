@@ -2,399 +2,49 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Piggy Contra o Mundo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080f18">
+<title>Piggy Contra o Mundo — Um porquinho. Uma horda. O labirinto é seu.</title>
+<meta name="description" content="Comande o Piggy, construa labirintos de torres e use suas habilidades para enfrentar hordas e conquistar chefões como aliados.">
 <link rel="icon" href="app_icon_192.png" type="image/png">
-<meta property="og:title" content="Piggy Contra o Mundo">
-<meta property="og:description" content="Tower defense em 3D. Posicione, evolua, resista à horda.">
+<link rel="canonical" href="https://neveskai.github.io/tower-tatics-pages/index.html">
+<link rel="alternate" hreflang="pt-BR" href="https://neveskai.github.io/tower-tatics-pages/index.html"><link rel="alternate" hreflang="en" href="https://neveskai.github.io/tower-tatics-pages/en/index.html"><link rel="alternate" hreflang="x-default" href="https://neveskai.github.io/tower-tatics-pages/index.html">
+<meta property="og:title" content="Piggy Contra o Mundo — Um porquinho. Uma horda. O labirinto é seu.">
+<meta property="og:description" content="Comande o Piggy, construa labirintos de torres e use suas habilidades para enfrentar hordas e conquistar chefões como aliados.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://neveskai.github.io/tower-tatics-pages/index.html">
 <meta property="og:image" content="https://neveskai.github.io/tower-tatics-pages/img/feature_graphic.png">
-<meta name="description" content="Piggy Contra o Mundo — tower defense em 3D para Android. 5 mapas temáticos, torres com ramos de evolução, sem anúncios e sem compras no app.">
-<style>
-  :root {
-    --bg: #0a0e14;
-    --bg-card: #131a24;
-    --bg-card-2: #1a2330;
-    --text: #eef2f6;
-    --text-dim: #93a1b3;
-    --accent: #4f8cff;
-    --accent-2: #ffb454;
-    --border: #26303e;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-  }
-  a { color: inherit; }
-
-  /* nav */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 28px;
-    background: rgba(10,14,20,0.85);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
-  }
-  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.05rem; letter-spacing: 0.02em; text-decoration: none; }
-  .brand img { width: 32px; height: 32px; border-radius: 8px; }
-  .nav-links { display: flex; gap: 26px; font-size: 0.9rem; color: var(--text-dim); }
-  .nav-links a { text-decoration: none; }
-  .nav-links a:hover { color: var(--text); }
-  @media (max-width: 640px) { .nav-links { display: none; } }
-
-  /* hero */
-  .hero {
-    position: relative;
-    min-height: 78vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 60px 20px;
-    background: #0a0e14 url("img/piggy_hero_landscape.png") center 35% / cover no-repeat;
-    overflow: hidden;
-  }
-  /* Hero art Piggy contra a horda; o véu mantém a leitura do conteúdo e funde com a página. */
-  .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at center 45%, rgba(10,14,20,0.55), rgba(10,14,20,0.2) 70%),
-      linear-gradient(180deg, rgba(10,14,20,0.35) 0%, transparent 30%, rgba(10,14,20,0.4) 75%, var(--bg) 100%);
-  }
-  @media (max-aspect-ratio: 1/1) {
-    .hero { background-image: url("img/piggy_hero_portrait.png"); background-position: center 30%; }
-  }
-  .hero-content { position: relative; z-index: 1; max-width: 680px; text-shadow: 0 2px 12px rgba(0,0,0,0.6); }
-  .hero img.icon {
-    width: 96px;
-    height: 96px;
-    border-radius: 22px;
-    box-shadow: 0 8px 30px rgba(79,140,255,0.35);
-    margin-bottom: 22px;
-  }
-  .hero h1 {
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    margin: 0 0 12px;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-  }
-  .hero .game-title { display: block; width: 100%; max-width: 560px; height: auto; margin: 0 auto; }
-  .hero .tagline {
-    color: #d3dbe6;
-    font-size: 1.1rem;
-    margin: 0 0 34px;
-  }
-
-  /* store badges */
-  .stores {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    justify-content: center;
-  }
-  .store-btn {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 22px;
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    background: var(--bg-card);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--text);
-    transition: border-color 0.15s, transform 0.15s;
-  }
-  .store-btn.active { border-color: var(--accent); }
-  .store-btn.active:hover { transform: translateY(-2px); }
-  .store-btn.disabled { color: var(--text-dim); cursor: default; background: rgba(19,26,36,0.88); }
-  .store-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
-  .store-btn .label small { display: block; font-weight: 400; font-size: 0.7rem; color: var(--text-dim); }
-
-  section { max-width: 960px; margin: 0 auto; padding: 70px 24px; }
-  .section-head { text-align: center; margin-bottom: 40px; }
-  .section-head h2 { font-size: 1.7rem; margin: 0 0 8px; }
-  .section-head p { color: var(--text-dim); margin: 0; max-width: 520px; margin-inline: auto; }
-
-  /* features */
-  .features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 18px;
-  }
-  .feature-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 24px;
-  }
-  .feature-card .emoji { font-size: 1.8rem; display: block; margin-bottom: 12px; }
-  .feature-card h3 { margin: 0 0 8px; font-size: 1.05rem; }
-  .feature-card p { margin: 0; color: var(--text-dim); font-size: 0.92rem; }
-
-  /* screenshots */
-  .shots {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 12px;
-  }
-  .shots img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 9 / 16;
-    object-fit: cover;
-    border-radius: 14px;
-    border: 1px solid var(--border);
-    background: var(--bg-card);
-    display: block;
-  }
-
-  /* maps */
-  .map-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-  }
-  .map-card img {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    display: block;
-    background: var(--bg-card-2);
-  }
-  .map-card .map-body { padding: 16px 18px 20px; }
-  .map-card h3 { margin: 0 0 6px; font-size: 1.02rem; }
-  .map-card p { margin: 0; color: var(--text-dim); font-size: 0.88rem; }
-
-  /* trust badges */
-  .trust {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 34px;
-  }
-  .trust-badge {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 18px;
-    border-radius: 999px;
-    border: 1px solid var(--border);
-    background: var(--bg-card);
-    font-size: 0.85rem;
-    color: var(--text-dim);
-  }
-  .trust-badge strong { color: var(--text); font-weight: 600; }
-
-  /* cta band */
-  .cta-band {
-    text-align: center;
-    padding: 70px 24px;
-    background: linear-gradient(135deg, rgba(79,140,255,0.12), rgba(255,90,60,0.08));
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-  .cta-band h2 { margin: 0 0 22px; font-size: 1.6rem; }
-
-  footer {
-    padding: 28px 24px 40px;
-    color: var(--text-dim);
-    font-size: 0.85rem;
-    display: flex;
-    justify-content: center;
-    gap: 22px;
-    flex-wrap: wrap;
-    text-align: center;
-  }
-  footer a { text-decoration: none; color: var(--text-dim); }
-  footer a:hover { color: var(--text); }
-</style>
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="fonts/BarlowCondensed-Bold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="styles/site.css">
+<script defer src="js/site.js"></script>
 </head>
-<body>
-
-<nav>
-  <a class="brand" href="#top">
-    <img src="app_icon_192.png" alt="">
-    PIGGY CONTRA O MUNDO
-  </a>
-  <div class="nav-links">
-    <a href="#features">Features</a>
-    <a href="#maps">Mapas</a>
-    <a href="#screenshots">Screenshots</a>
-    <a href="blog/index.html">Blog</a>
-    <a href="privacy.html">Privacidade</a>
+<body class="page-home" data-locale="pt">
+<a class="skip-link" href="#content">Pular para o conteúdo</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="index.html"><img src="app_icon_192.png" width="38" height="38" alt=""><span>Piggy Contra o Mundo</span></a>
+    <button class="menu-toggle" type="button" aria-label="Abrir navegação" aria-expanded="false" aria-controls="navigation"><span aria-hidden="true">☰</span></button>
+    <nav class="navigation" id="navigation" aria-label="Principal"><a href="#game">O jogo</a><a href="#arsenal">Arsenal</a><a href="#worlds">Mundos</a><a href="#gameplay">Gameplay</a><a href="blog/index.html">Blog</a></nav>
+    <div class="header-actions"><div class="languages" aria-label="Idioma"><a href="index.html" lang="pt-BR" hreflang="pt-BR" aria-current="page">PT</a><span aria-hidden="true">/</span><a href="en/index.html" lang="en" hreflang="en">EN</a></div><a class="header-play" href="https://play.google.com/store/apps/details?id=com.neveskai.towertactics3d" target="_blank" rel="noopener">Google Play<span aria-hidden="true">↗</span></a></div>
   </div>
-</nav>
-
-<div class="hero" id="top">
-  <div class="hero-content">
-    <img class="icon" src="app_icon_192.png" alt="Ícone Piggy Contra o Mundo">
-    <h1><img class="game-title" src="img/game_title.webp" alt="Piggy Contra o Mundo" width="806" height="364"></h1>
-    <p class="tagline">Tower defense em 3D. Posicione, evolua, resista à horda.</p>
-
-    <div class="stores">
-      <a class="store-btn disabled" aria-disabled="true">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3l10.5 9L3 21V3z"/><path d="M15 10l4.5-2.5L21 12l-1.5 4.5L15 14l-2-2z" opacity="0.5"/></svg>
-        <span class="label">Em breve no<br><strong>Google Play</strong></span>
-      </a>
-      <a class="store-btn disabled" aria-disabled="true">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5z" opacity="0.5"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" opacity="0.3"/></svg>
-        <span class="label">Steam<br><small>a planear</small></span>
-      </a>
-      <a class="store-btn disabled" aria-disabled="true">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 2c.1 1.1-.3 2.2-1 3-.7.8-1.9 1.5-3 1.4-.1-1.1.4-2.2 1-3 .8-.8 2-1.4 3-1.4zM20.8 17c-.5 1.2-.8 1.7-1.5 2.8-1 1.5-2.3 3.4-4 3.4-1.5 0-1.9-1-3.9-1s-2.5 1-4 1c-1.7 0-3-1.7-4-3.2C1.5 17 .8 12.5 2.9 9.4c1-1.5 2.6-2.5 4.2-2.5 1.6 0 2.6 1.1 3.9 1.1s2.1-1.1 4-1.1c1.4 0 2.9.8 3.9 2.1-3.4 1.9-2.9 6.8 1.9 8" opacity="0.5"/></svg>
-        <span class="label">App Store<br><small>a planear</small></span>
-      </a>
-    </div>
-
-    <div class="trust">
-      <span class="trust-badge">🚫 <strong>Sem anúncios</strong></span>
-      <span class="trust-badge">💳 <strong>Sem compras no app</strong></span>
-      <span class="trust-badge">🔒 <strong>Sem coleta de dados</strong></span>
-    </div>
-  </div>
-</div>
-
-<section id="trailer" style="padding-top:0;">
-  <div class="section-head">
-    <h2>Trailer</h2>
-    <p>Piggy contra as hordas: construa sua defesa, invoque aliados e enfrente bosses.</p>
-  </div>
-  <video controls playsinline preload="metadata" poster="img/feature_graphic.webp"
-    aria-label="Teaser de gameplay de Piggy Contra o Mundo"
-    style="width:100%;max-width:960px;display:block;margin:0 auto;border-radius:16px;border:1px solid var(--border);background:var(--bg-card);">
-    <source src="trailer.mp4" type="video/mp4">
-    <a href="trailer.mp4">Assista ao teaser de Piggy Contra o Mundo.</a>
-  </video>
-  <p style="text-align:center;font-size:0.8rem;margin-top:16px;">Música: “Take a Chance” — Kevin MacLeod (<a href="https://incompetech.com/">incompetech.com</a>),
-    <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Faixa editada e mixada com os sons do jogo.</p>
+</header>
+<main id="content"><section class="hero" aria-labelledby="hero-title">
+  <div class="hero-backdrop" aria-hidden="true"></div>
+  <div class="hero-grid wrap">
+    <div class="hero-copy"><p class="eyebrow"><span class="tiny-spark" aria-hidden="true">✦</span> Estratégia em 3D. Caos sob controle.</p><h1 id="hero-title"><span>Um porquinho.</span><span>Uma horda.</span><em>O labirinto é seu.</em></h1><p class="hero-description">Comande o Piggy, construa labirintos de torres e use suas habilidades para enfrentar hordas e conquistar chefões como aliados.</p><div class="actions "><a class="button button-gold" href="https://play.google.com/store/apps/details?id=com.neveskai.towertactics3d" target="_blank" rel="noopener">Disponível no Google Play<span aria-hidden="true">↗</span></a><a class="button button-outline" href="https://piggy-against-the-world.netlify.app/" target="_blank" rel="noopener">Jogar demo grátis<span aria-hidden="true">▷</span></a></div><p class="demo-note">No navegador · os 3 primeiros mapas</p><a class="text-link" href="#gameplay"><span class="play-ring" aria-hidden="true">▷</span>Veja o jogo em ação<span aria-hidden="true">↓</span></a></div>
+    <div class="hero-stage"><div class="orbit orbit-one" aria-hidden="true"></div><div class="orbit orbit-two" aria-hidden="true"></div><img class="hero-island" src="img/map_forest.webp" alt="" width="512" height="400"><div class="hero-phone"><div class="motion-frame portrait" data-hero-motion><video muted loop playsinline preload="none" poster="media/combat-poster.webp" data-src="media/combat.mp4" aria-label="Veja o jogo em ação" data-priority="true"></video></div><span class="phone-corner corner-top" aria-hidden="true"></span><span class="phone-corner corner-bottom" aria-hidden="true"></span></div><div class="hero-caption"><span class="live-dot" aria-hidden="true"></span>Seu plano. O caminho deles.</div><span class="stage-number" aria-hidden="true">01 / 11</span></div>
+  </div><div class="hero-bottom wrap"><span>Conheça seu próximo desafio<span aria-hidden="true"> ↓</span></span><span class="hero-platform">ANDROID <span aria-hidden="true">✦</span> 3D TOWER DEFENSE</span></div>
 </section>
-
-<section id="features">
-  <div class="section-head">
-    <h2>Sobre o jogo</h2>
-    <p>Estratégia clássica de defesa de torres, construída do zero em 3D.</p>
-  </div>
-  <div class="features">
-    <div class="feature-card">
-      <span class="emoji">🏰</span>
-      <h3>Ramos de torre</h3>
-      <p>Evolua cada torre por caminhos diferentes, adaptando a build a cada onda.</p>
-    </div>
-    <div class="feature-card">
-      <span class="emoji">👹</span>
-      <h3>Monstros por mapa</h3>
-      <p>Cada cenário traz inimigos com visual e comportamento próprios — nada de reciclagem genérica.</p>
-    </div>
-    <div class="feature-card">
-      <span class="emoji">📈</span>
-      <h3>Progressão de conta</h3>
-      <p>Suba de nível fora das partidas e desbloqueie melhorias permanentes.</p>
-    </div>
-    <div class="feature-card">
-      <span class="emoji">📱</span>
-      <h3>Feito pra mobile</h3>
-      <p>Performance otimizada para rodar bem em aparelhos Android médios.</p>
-    </div>
-  </div>
-</section>
-
-<section id="maps">
-  <div class="section-head">
-    <h2>Mapas</h2>
-    <p>5 cenários com identidade visual própria, cada um com seu próprio elenco de ameaças.</p>
-  </div>
-  <div class="features">
-    <div class="map-card">
-      <img src="img/map_forest.webp" alt="Diorama do mapa Floresta Orc" loading="lazy">
-      <div class="map-body">
-        <h3>Floresta Orc</h3>
-        <p>Onde a campanha começa. Orcs e goblins entre as árvores.</p>
-      </div>
-    </div>
-    <div class="map-card">
-      <img src="img/map_cemetery.webp" alt="Diorama do mapa Haunted Cemetery" loading="lazy">
-      <div class="map-body">
-        <h3>Haunted Cemetery</h3>
-        <p>Mortos-vivos e voadores espectrais rondam entre lápides.</p>
-      </div>
-    </div>
-    <div class="map-card">
-      <img src="img/map_cave.webp" alt="Diorama do mapa Skeleton Cave" loading="lazy">
-      <div class="map-body">
-        <h3>Skeleton Cave</h3>
-        <p>Esqueletos numa caverna gelada, fundo do mapa.</p>
-      </div>
-    </div>
-    <div class="map-card">
-      <img src="img/map_hell.webp" alt="Diorama do mapa Hell Vulcan" loading="lazy">
-      <div class="map-body">
-        <h3>Hell Vulcan</h3>
-        <p>Terreno vulcânico, calor extremo, criaturas forjadas na lava.</p>
-      </div>
-    </div>
-    <div class="map-card">
-      <img src="img/map_snow.webp" alt="Diorama do mapa Snow Mountain" loading="lazy">
-      <div class="map-body">
-        <h3>Snow Mountain</h3>
-        <p>Picos gelados, visibilidade reduzida, inimigos adaptados ao frio.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="screenshots">
-  <div class="section-head">
-    <h2>Screenshots</h2>
-    <p>Direto do jogo — os 5 mapas, torres, habilidades, status e cartas.</p>
-  </div>
-  <div class="shots">
-    <img src="img/shot_play.webp" alt="Hub do jogo com a ilha do mapa Floresta Orc" width="720" height="1280" loading="lazy">
-    <img src="img/shot_ingame_forest.webp" alt="Partida na Floresta Orc" width="720" height="1280" loading="lazy">
-    <img src="img/shot_ingame_cemetery.webp" alt="Partida no Cemitério Assombrado" width="720" height="1280" loading="lazy">
-    <img src="img/shot_ingame_cave.webp" alt="Partida na Caverna dos Esqueletos" width="720" height="1280" loading="lazy">
-    <img src="img/shot_ingame_hell.webp" alt="Partida no Vulcão Infernal" width="720" height="1280" loading="lazy">
-    <img src="img/shot_ingame_snow.webp" alt="Partida na Montanha Nevada" width="720" height="1280" loading="lazy">
-    <img src="img/shot_towers.webp" alt="Coleção de torres: Balista e Catapulta" width="720" height="1280" loading="lazy">
-    <img src="img/shot_tower_detail.webp" alt="Detalhes e evolução de uma torre" width="720" height="1280" loading="lazy">
-    <img src="img/shot_skills.webp" alt="Coleção de habilidades do jogador" width="720" height="1280" loading="lazy">
-    <img src="img/shot_stats.webp" alt="Status e melhorias permanentes da conta" width="720" height="1280" loading="lazy">
-    <img src="img/shot_cards.webp" alt="Coleção de cartas de inimigos" width="720" height="1280" loading="lazy">
-    <img src="img/shot_card_detail.webp" alt="Detalhes de uma carta de inimigo" width="720" height="1280" loading="lazy">
-  </div>
-</section>
-
-<div class="cta-band">
-  <h2>Fique de olho no lançamento</h2>
-  <div class="stores">
-    <a class="store-btn disabled" aria-disabled="true">
-      <span class="label">Em breve no<br><strong>Google Play</strong></span>
-    </a>
-  </div>
-</div>
-
-<footer>
-  <span>&copy; 2026 Neveskai</span>
-  <a href="blog/index.html">Blog</a>
-  <a href="privacy.html">Política de Privacidade</a>
-  <a href="mailto:wnevesky@gmail.com">Contato</a>
-</footer>
-
+<div class="trust-strip"><div class="wrap"><span><span class="gold" aria-hidden="true">✦</span>Sem anúncios</span><span><span class="gold" aria-hidden="true">✦</span>Sem compras no app</span><span><span class="gold" aria-hidden="true">✦</span>Progresso salvo no dispositivo</span></div></div>
+<section class="section wrap" id="game"><div class="section-heading reveal"><p class="eyebrow">Pequeno herói. Grandes decisões.</p><h2>Construa. Resista. Conquiste.</h2></div><div class="story-grid"><article class="story reveal"><a class="story-art" href="#arsenal"><img class="" src="media/construction-poster.webp" alt="" width="600" height="1080" loading="lazy" decoding="async"><span class="story-count" aria-hidden="true">01</span><span class="story-art-label">Torres<span aria-hidden="true">↗</span></span></a><h3>Cada torre muda o caminho.</h3><p>Você escolhe o lugar. O Piggy corre, monta o andaime e coloca sua estratégia de pé. Desenhe um labirinto que faça cada disparo valer.</p></article><article class="story reveal"><a class="story-art" href="#gameplay"><img class="" src="media/combat-poster.webp" alt="" width="600" height="1080" loading="lazy" decoding="async"><span class="story-count" aria-hidden="true">02</span><span class="story-art-label">Habilidades<span aria-hidden="true">↗</span></span></a><h3>A horda não espera.</h3><p>Voadores, inimigos furtivos e chefões que destroem suas torres. Leia a ameaça, combine suas defesas e solte a habilidade na hora certa.</p></article><article class="story reveal"><a class="story-art" href="#arsenal"><img class="story-creature" src="img/arsenal_orc.webp" alt="" width="400" height="400" loading="lazy" decoding="async"><span class="story-count" aria-hidden="true">03</span><span class="story-art-label">Invocações<span aria-hidden="true">↗</span></span></a><h3>O chefão agora é seu aliado.</h3><p>Derrote um Boss no Classic para conquistar sua invocação. Leve-o à próxima batalha, use seu poder exclusivo e veja seu aliado crescer.</p></article></div></section>
+<section class="arsenal-section section" id="arsenal"><div class="wrap"><div class="section-heading reveal"><p class="eyebrow">Prepare seu arsenal</p><h2>Sua estratégia tem poder.</h2><p>Escolha o que levar. Descubra novas combinações. Volte mais forte.</p></div><div class="arsenal-tabs" data-tabs><div class="tab-buttons" aria-label="Prepare seu arsenal"><a id="tab-towers" href="#panel-towers"><span aria-hidden="true">01</span>Torres</a><a id="tab-skills" href="#panel-skills"><span aria-hidden="true">02</span>Habilidades</a><a id="tab-summons" href="#panel-summons"><span aria-hidden="true">03</span>Invocações</a></div><article id="panel-towers" class="arsenal-panel" aria-labelledby="tab-towers"><div class="arsenal-visual"><div class="motion-frame "><video muted loop playsinline preload="none" poster="media/towers-poster.webp" data-src="media/towers.mp4" aria-label="Torres"></video></div><div class="item-medallion"><img class="" src="img/arsenal_ballista.webp" alt="Balista" width="150" height="150" loading="lazy" decoding="async"><span>Balista</span></div></div><div class="arsenal-copy"><p class="eyebrow">01 / Torres</p><h3>Monte uma defesa com propósito.</h3><p>Balistas para pressionar, Catapultas para atingir grupos, Laser para concentrar dano. Combine funções, ajuste o posicionamento e melhore suas torres dentro e fora da partida.</p><p class="gold-note">O posicionamento faz parte da arma.</p></div></article><article id="panel-skills" class="arsenal-panel" aria-labelledby="tab-skills"><div class="arsenal-visual"><div class="motion-frame "><video muted loop playsinline preload="none" poster="media/skill-poster.webp" data-src="media/skill.mp4" aria-label="Habilidades"></video></div><div class="item-medallion"><img class="" src="img/arsenal_lightning.svg" alt="Relâmpago" width="150" height="150" loading="lazy" decoding="async"><span>Relâmpago</span></div></div><div class="arsenal-copy"><p class="eyebrow">02 / Habilidades</p><h3>Mude o rumo da próxima onda.</h3><p>Atinja grupos com Relâmpago, controle a passagem com Vinhas e fortaleça suas torres. Mire no campo de batalha: o Piggy leva a ação até o ponto escolhido.</p><p class="gold-note">Guarde o poder para o momento certo.</p></div></article><article id="panel-summons" class="arsenal-panel" aria-labelledby="tab-summons"><div class="arsenal-visual"><div class="motion-frame "><video muted loop playsinline preload="none" poster="media/summon-poster.webp" data-src="media/summon.mp4" aria-label="Invocações"></video></div><div class="item-medallion"><img class="" src="img/arsenal_orc.webp" alt="Orc Refletor" width="150" height="150" loading="lazy" decoding="async"><span>Orc Refletor</span></div></div><div class="arsenal-copy"><p class="eyebrow">03 / Invocações</p><h3>Conquiste. Invoque. Evolua.</h3><p>Os chefões que você derrotou podem lutar ao seu lado. Cada aliado tem uma habilidade própria e ganha experiência nas partidas, crescendo junto com suas conquistas.</p><p class="gold-note">Seu troféu de batalha entra em campo.</p></div></article></div></div></section>
+<section class="section wrap" id="worlds"><div class="section-heading reveal"><p class="eyebrow">Uma campanha, muitos desafios</p><h2>O mundo não vai facilitar.</h2><p>Da primeira floresta à Arena dos Gladiadores: novos cenários, inimigos e motivos para repensar sua defesa.</p></div><div class="world-browser" data-worlds><div class="world-selector" aria-label="Escolha um cenário"><a href="#world-1" data-world="1"><span>01</span>Floresta Orc</a><a href="#world-2" data-world="2"><span>02</span>Cemitério Assombrado</a><a href="#world-3" data-world="3"><span>03</span>Caverna dos Esqueletos</a><a href="#world-4" data-world="4"><span>04</span>Vulcão Infernal</a><a href="#world-5" data-world="5"><span>05</span>Montanha Nevada</a><a href="#world-6" data-world="6"><span>06</span>Ruínas Douradas</a><a href="#world-7" data-world="7"><span>07</span>Pântano Esmeralda</a><a href="#world-8" data-world="8"><span>08</span>Santuário Arcano</a><a href="#world-9" data-world="9"><span>09</span>Fortaleza Caída</a><a href="#world-10" data-world="10"><span>10</span>Reino Astral</a><a href="#world-11" data-world="11"><span>11</span>Arena dos Gladiadores</a></div><div class="world-scenes"><article class="world-scene" id="world-1"><div class="world-art"><img class="" src="img/map_forest.webp" alt="Floresta Orc" width="512" height="400" loading="lazy" decoding="async"><span class="world-index" aria-hidden="true">01</span></div><div class="world-copy"><span class="pill pill-demo">Também na demo</span><h3>Floresta Orc</h3><p>O primeiro labirinto. Orcs e goblins colocam sua defesa à prova entre as árvores.</p></div></article><article class="world-scene" id="world-2"><div class="world-art"><img class="" src="img/map_cemetery.webp" alt="Cemitério Assombrado" width="512" height="400" loading="lazy" decoding="async"><span class="world-index" aria-hidden="true">02</span></div><div class="world-copy"><span class="pill pill-demo">Também na demo</span><h3>Cemitério Assombrado</h3><p>Lápides, mortos-vivos e ameaças espectrais. Prepare uma resposta para o que vem do além.</p></div></article><article class="world-scene" id="world-3"><div class="world-art"><img class="" src="img/map_cave.webp" alt="Caverna dos Esqueletos" width="512" height="400" loading="lazy" decoding="async"><span class="world-index" aria-hidden="true">03</span></div><div class="world-copy"><span class="pill pill-demo">Também na demo</span><h3>Caverna dos Esqueletos</h3><p>Cristais iluminam o subterrâneo. Os esqueletos não vão deixar você admirar a paisagem.</p></div></article><article class="world-scene" id="world-4"><div class="world-art"><img class="" src="img/map_hell.webp" alt="Vulcão Infernal" width="512" height="400" loading="lazy" decoding="async"><span class="world-index" aria-hidden="true">04</span></div><div class="world-copy"><span class="pill">Jogo completo</span><h3>Vulcão Infernal</h3><p>Torres diante da lava e criaturas infernais. Sua estratégia precisa aguentar a pressão.</p></div></article><article class="world-scene" id="world-5"><div class="world-art"><img class="" src="img/map_snow.webp" alt="Montanha Nevada" width="512" height="400" loading="lazy" decoding="async"><span class="world-index" aria-hidden="true">05</span></div><div class="world-copy"><span class="pill">Jogo completo</span><h3>Montanha Nevada</h3><p>A campanha sobe aos picos gelados. Não deixe sua defesa esfriar.</p></div></article><article class="world-scene" id="world-6"><div class="world-art"><img class="" src="img/map_crystal_ruins.webp" alt="Ruínas Douradas" width="512" height="400" loading="lazy" decoding="async"><span class="world-index" aria-hidden="true">06</span></div><div class="world-copy"><span class="pill">Jogo completo</span><h3>Ruínas Douradas</h3><p>Um novo horizonte entre areia e ruínas. Mais uma razão para reorganizar seu arsenal.</p></div></article><article class="world-scene" id="world-7"><div class="world-art"><img class="" src="img/map_crystal_marsh.webp" alt="Pântano Esmeralda" width="512" height="400" loading="lazy" decoding="async"><span class="world-index" aria-hidden="true">07</span></div><div class="world-copy"><span class="pill">Jogo completo</span><h3>Pântano Esmeralda</h3><p>Terras verdes e criaturas inquietas. A próxima ameaça pede toda a sua atenção.</p></div></article><article class="world-scene" id="world-8"><div class="world-art"><img class="" src="img/map_crystal_sanctum.webp" alt="Santuário Arcano" width="512" height="400" loading="lazy" decoding="async"><span class="world-index" aria-hidden="true">08</span></div><div class="world-copy"><span class="pill">Jogo completo</span><h3>Santuário Arcano</h3><p>A magia toma o campo. Observe os avisos e mantenha o Piggy em movimento.</p></div></article><article class="world-scene" id="world-9"><div class="world-art"><img class="" src="img/map_crystal_fortress.webp" alt="Fortaleza Caída" width="512" height="400" loading="lazy" decoding="async"><span class="world-index" aria-hidden="true">09</span></div><div class="world-copy"><span class="pill">Jogo completo</span><h3>Fortaleza Caída</h3><p>Muralhas antigas, uma nova batalha. Faça sua formação resistir até o fim.</p></div></article><article class="world-scene" id="world-10"><div class="world-art"><img class="" src="img/map_crystal_astral.webp" alt="Reino Astral" width="512" height="400" loading="lazy" decoding="async"><span class="world-index" aria-hidden="true">10</span></div><div class="world-copy"><span class="pill">Jogo completo</span><h3>Reino Astral</h3><p>A jornada alcança outros céus. Combine tudo o que aprendeu para seguir em frente.</p></div></article><article class="world-scene" id="world-11"><div class="world-art"><img class="" src="img/map_arena.webp" alt="Arena dos Gladiadores" width="512" height="400" loading="lazy" decoding="async"><span class="world-index" aria-hidden="true">11</span></div><div class="world-copy"><span class="pill">Jogo completo</span><h3>Arena dos Gladiadores</h3><p>O desafio final da campanha Classic. Entre na arena com seu melhor plano.</p></div></article></div></div><div class="mode-grid"><article><span class="mode-symbol" aria-hidden="true">⚑</span><h3>Classic</h3><p>Construa seu labirinto, proteja o portal e conquiste as três estrelas de cada mapa.</p></article><article><span class="mode-symbol" aria-hidden="true">⚔</span><h3>Expedição</h3><p>Depois de completar o Classic, enfrente uma sequência de campeões, minichefes e chefões.</p></article></div></section>
+<section class="gameplay-section section" id="gameplay"><div class="wrap"><div class="section-heading reveal"><p class="eyebrow">Direto do campo de batalha</p><h2>Veja o caos ganhar forma.</h2><p>Gameplay real, decisões em movimento e um porquinho com muito trabalho pela frente.</p></div><div class="gameplay-grid"><div class="construction-display"><div class="motion-frame portrait"><video muted loop playsinline preload="none" poster="media/construction-poster.webp" data-src="media/construction.mp4" aria-label="Cada torre muda o caminho."></video></div><div class="construction-caption"><span class="eyebrow">01 / Torres</span><h3>Cada torre muda o caminho.</h3></div></div><div class="trailer-area"><div class="trailer-player"><video controls playsinline preload="none" poster="media/trailer-poster.webp" aria-label="Assista ao trailer completo"><source data-src="trailer.mp4" type="video/mp4"><a href="trailer.mp4">Assista ao trailer completo</a></video><button class="trailer-load" type="button" data-trailer><span aria-hidden="true">▷</span>Assista ao trailer completo</button><noscript><a class="button button-gold" href="trailer.mp4">Assista ao trailer completo</a></noscript></div><h3>Assista ao trailer completo</h3><p>70 segundos de construção, poderes e chefões. Trailer em português.</p><p class="credits">Música: “Take a Chance” — Kevin MacLeod. Faixa editada e mixada com os sons do jogo. <a href="https://incompetech.com/" target="_blank" rel="noopener">incompetech.com</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p></div></div><div class="gallery-heading"><h3>Entre uma onda e outra</h3><span>01 — 07</span></div><div class="gallery" aria-label="Entre uma onda e outra"><a class="shot" href="media/pt/shot_combat.webp" data-gallery aria-label="Ampliar captura: Uma defesa em plena batalha"><img class="" src="media/pt/shot_combat.webp" alt="Uma defesa em plena batalha" width="720" height="1280" loading="lazy" decoding="async"><span><span class="shot-index">01</span>Uma defesa em plena batalha<span aria-hidden="true">↗</span></span></a><a class="shot" href="media/pt/shot_play.webp" data-gallery aria-label="Ampliar captura: Seu próximo campo de batalha"><img class="" src="media/pt/shot_play.webp" alt="Seu próximo campo de batalha" width="720" height="1280" loading="lazy" decoding="async"><span><span class="shot-index">02</span>Seu próximo campo de batalha<span aria-hidden="true">↗</span></span></a><a class="shot" href="media/pt/shot_towers.webp" data-gallery aria-label="Ampliar captura: Torres para combinar"><img class="" src="media/pt/shot_towers.webp" alt="Torres para combinar" width="720" height="1280" loading="lazy" decoding="async"><span><span class="shot-index">03</span>Torres para combinar<span aria-hidden="true">↗</span></span></a><a class="shot" href="media/pt/shot_skills.webp" data-gallery aria-label="Ampliar captura: Habilidades para mudar o jogo"><img class="" src="media/pt/shot_skills.webp" alt="Habilidades para mudar o jogo" width="720" height="1280" loading="lazy" decoding="async"><span><span class="shot-index">04</span>Habilidades para mudar o jogo<span aria-hidden="true">↗</span></span></a><a class="shot" href="media/pt/shot_summons.webp" data-gallery aria-label="Ampliar captura: Chefões conquistados como aliados"><img class="" src="media/pt/shot_summons.webp" alt="Chefões conquistados como aliados" width="720" height="1280" loading="lazy" decoding="async"><span><span class="shot-index">05</span>Chefões conquistados como aliados<span aria-hidden="true">↗</span></span></a><a class="shot" href="media/pt/shot_tower_detail.webp" data-gallery aria-label="Ampliar captura: Melhorias para a próxima partida"><img class="" src="media/pt/shot_tower_detail.webp" alt="Melhorias para a próxima partida" width="720" height="1280" loading="lazy" decoding="async"><span><span class="shot-index">06</span>Melhorias para a próxima partida<span aria-hidden="true">↗</span></span></a><a class="shot" href="media/pt/shot_stats.webp" data-gallery aria-label="Ampliar captura: Uma jornada de evolução"><img class="" src="media/pt/shot_stats.webp" alt="Uma jornada de evolução" width="720" height="1280" loading="lazy" decoding="async"><span><span class="shot-index">07</span>Uma jornada de evolução<span aria-hidden="true">↗</span></span></a></div></div></section>
+<section class="cta-section"><div class="wrap cta-inner"><p class="eyebrow">Sua próxima defesa começa aqui</p><h2>A horda vem aí.<br>Faça valer cada torre.</h2><p>Experimente os três primeiros mapas no navegador ou encare a jornada completa no Android.</p><div class="actions "><a class="button button-gold" href="https://play.google.com/store/apps/details?id=com.neveskai.towertactics3d" target="_blank" rel="noopener">Disponível no Google Play<span aria-hidden="true">↗</span></a><a class="button button-outline" href="https://piggy-against-the-world.netlify.app/" target="_blank" rel="noopener">Jogar demo grátis<span aria-hidden="true">▷</span></a></div><p class="demo-note">No navegador · os 3 primeiros mapas</p></div></section>
+<button class="motion-toggle" hidden data-motion-toggle data-pause="Pausar animações" data-resume="Reproduzir animações" type="button" aria-pressed="false">Pausar animações</button>
+<dialog class="lightbox" aria-label="Entre uma onda e outra"><button class="lightbox-close" type="button" aria-label="Fechar">×</button><button class="lightbox-prev" type="button" aria-label="Anterior">←</button><figure><img alt=""><figcaption></figcaption></figure><button class="lightbox-next" type="button" aria-label="Próxima">→</button></dialog></main>
+<footer class="site-footer wrap"><a class="brand" href="index.html"><img src="app_icon_192.png" width="32" height="32" alt=""><span>Piggy Contra o Mundo</span></a><p>© 2026 Neveskai</p><div><a href="blog/index.html">Blog</a><a href="privacy.html">Privacidade</a><a href="mailto:wnevesky@gmail.com">Contato</a></div></footer>
 </body>
 </html>
