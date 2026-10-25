@@ -109,16 +109,6 @@
     links.forEach((link,index)=>link.addEventListener('click',event=>{event.preventDefault();select(index);}));
     window.addEventListener('hashchange',()=>{const index=links.findIndex(link=>link.hash===location.hash);if(index>=0)select(index);});
   });
-  document.querySelector('[data-trailer]')?.addEventListener('click', event => {
-    const button = event.currentTarget;
-    const player = button.parentElement.querySelector('video');
-    const source = player.querySelector('source');
-    source.src = source.dataset.src;
-    player.load();
-    button.hidden = true;
-    player.focus();
-    player.play().catch(() => {});
-  });
   const dialog = document.querySelector('.lightbox');
   const shots = [...document.querySelectorAll('[data-gallery]')];
   if (dialog && typeof dialog.showModal === 'function') {

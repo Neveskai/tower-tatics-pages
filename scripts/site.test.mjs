@@ -45,8 +45,8 @@ test('home pages advertise only current modes, with store/demo links and usable 
       assert.ok(html.includes(`media/${motionLocale}${clip}.mp4`), `Localized loop: ${prefix}${clip}`);
       assert.ok(html.includes(`media/${motionLocale}${clip}-poster.webp`), `Localized poster: ${prefix}${clip}`);
     }
-    assert.match(html,/<source data-src="[^\"]*trailer.mp4"/);
-    assert.match(html,/<a href="[^\"]*trailer.mp4">/);
+    assert.match(html,/<iframe src="https:\/\/www\.youtube-nocookie\.com\/embed\/vvlwDFHf8fo" title="[^"]+"[^>]*loading="lazy"[^>]*referrerpolicy="strict-origin-when-cross-origin"[^>]*allowfullscreen><\/iframe>/);
+    assert.doesNotMatch(html,/trailer\.mp4|data-trailer|trailer-load/);
   }
 });
 test('English blog keeps original Portuguese article language and canonical URL',()=>{
@@ -79,5 +79,6 @@ test('reduced motion and data saving keep loops as posters without requesting vi
   for(const options of [{reduce:true},{saveData:true}]){const h=motionHarness(options);h.intersect(true);assert.equal(h.video.src,'');assert.equal(h.video.playCount,0);}
 });
 test('public bundle contains no authoring sources or private configuration',()=>{
+  assert.ok(!existsSync(path.join(site,'trailer.mp4')), 'Trailer is hosted on YouTube, not deployed');
   for(const file of files(site))assert.doesNotMatch(path.relative(site,file),/(^|[\\/])(?:\.git|\.env|node_modules|posts|templates|scripts)([\\/]|$)|\.md$/);
 });

@@ -6,7 +6,7 @@ if (output !== path.resolve(repo,'_site') || !output.startsWith(repo + path.sep)
 rmSync(output,{recursive:true,force:true});
 mkdirSync(output,{recursive:true});
 // Explicit public allowlist: source scripts, posts and private files are never deployed.
-for (const entry of ['index.html','privacy.html','app_icon_192.png','trailer.mp4','styles','js','fonts','media','img','shots','en']) {
+for (const entry of ['index.html','privacy.html','app_icon_192.png','styles','js','fonts','media','img','shots','en']) {
   cpSync(path.join(repo,entry),path.join(output,entry),{recursive:true});
 }
 mkdirSync(path.join(output,'blog'),{recursive:true});
