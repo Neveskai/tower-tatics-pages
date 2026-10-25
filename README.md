@@ -31,7 +31,7 @@ As fontes, scripts de preparação e capturas de revisão desta reformulação e
 
 As molduras e texturas são os recortes originais da HUD final em `tower-tatics-3D/assets/ui/hud_comic/extracted/`, convertidos em WebP sem perdas. O botão principal combina a moldura e a impressão dourada do jogo. A fonte Barlow Condensed e sua licença OFL estão em `fonts/`.
 
-A mídia foi regenerada após o aviso de conclusão da HUD em 21/10/2026. Capturas e clipes de construção/combate têm versões PT/EN; os clipes aproximados do arsenal não contêm texto. O trailer preserva duração, música e créditos, com as cenas de gameplay atualizadas.
+A mídia foi regenerada após o aviso de conclusão da HUD em 21/10/2026. Capturas e clipes de construção/combate têm versões PT/EN; os clipes aproximados do arsenal não contêm texto. Em 24/10/2026, o trailer foi substituído pelo vídeo oficial de lançamento de 41 s, com capa e créditos de “Five Armies” — Kevin MacLeod atualizados. A fonte é `../store-assets/2026-10-24-lancamento/video-hype-16x9.mp4`; a capa vem de `capas/video-hype-16x9.jpg` no mesmo pacote. O link da demo/beta Web permanece o mesmo.
 
 ## Publicação
 

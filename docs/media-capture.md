@@ -4,6 +4,8 @@
 
 ## Pacote atual
 
+O trailer publicado desde 24/10/2026 é uma cópia de `../../../store-assets/2026-10-24-lancamento/video-hype-16x9.mp4` (41,1 s). A capa `capas/video-hype-16x9.jpg` desse pacote foi convertida em `media/trailer-poster.webp` com FFmpeg/libwebp, qualidade 88. Música: “Five Armies” — Kevin MacLeod, CC BY 4.0, com créditos nas duas páginas. O roteiro abaixo permanece válido para as capturas e os loops; `update-trailer.py` descreve o trailer anterior de 70 s e não deve substituir o trailer oficial de lançamento.
+
 Fontes e scripts em `../../../store-assets/2026-10-21-site/` a partir deste documento. A rodada anterior continua preservada em `2026-10-20-site/`.
 
 - `pt/phone/` e `en/phone/`: 13 capturas PNG por idioma, geradas pelo runner do build completo, com save separado.

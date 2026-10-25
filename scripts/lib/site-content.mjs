@@ -7,7 +7,8 @@ export const copy = {
     description: 'Comande o Piggy, construa labirintos de torres e use suas habilidades para enfrentar hordas e conquistar chefões como aliados.',
     nav: ['O jogo', 'Arsenal', 'Mundos', 'Gameplay', 'Blog'], play: 'Disponível no Google Play', playShort: 'Google Play', demo: 'Jogar demo grátis', demoNote: 'No navegador · os 3 primeiros mapas',
     hero: ['Um porquinho.', 'Uma horda.', 'O labirinto é seu.'], eyebrow: 'Estratégia em 3D. Caos sob controle.', heroLabel: 'Seu plano. O caminho deles.', watch: 'Veja o jogo em ação', scroll: 'Conheça seu próximo desafio',
-    trust: ['Sem anúncios', 'Sem compras no app', 'Progresso salvo no dispositivo'],
+    launch: 'Já disponível para Android',
+    trust: ['Compra única', 'Sem anúncios', 'Sem compras no app', 'Progresso salvo no dispositivo'],
     storyEyebrow: 'Pequeno herói. Grandes decisões.', storyTitle: 'Construa. Resista. Conquiste.',
     stories: [
       ['01', 'Cada torre muda o caminho.', 'Você escolhe o lugar. O Piggy corre, monta o andaime e coloca sua estratégia de pé. Desenhe um labirinto que faça cada disparo valer.'],
@@ -26,19 +27,20 @@ export const copy = {
       ['Classic', 'Construa seu labirinto, proteja o portal e conquiste as três estrelas de cada mapa.'],
       ['Expedição', 'Depois de completar o Classic, enfrente uma sequência de campeões, minichefes e chefões.']
     ],
-    gameplayEyebrow: 'Direto do campo de batalha', gameplayTitle: 'Veja o caos ganhar forma.', gameplayIntro: 'Gameplay real, decisões em movimento e um porquinho com muito trabalho pela frente.', trailer: 'Assista ao trailer completo', trailerNote: '70 segundos de construção, poderes e chefões. Trailer em português.', screenshots: 'Entre uma onda e outra', enlarge: 'Ampliar captura', close: 'Fechar', previous: 'Anterior', next: 'Próxima', pause: 'Pausar animações', resume: 'Reproduzir animações',
+    gameplayEyebrow: 'Direto do campo de batalha', gameplayTitle: 'Veja o caos ganhar forma.', gameplayIntro: 'Gameplay real, decisões em movimento e um porquinho com muito trabalho pela frente.', trailer: 'Assista ao trailer de lançamento', trailerNote: '41 segundos de estratégia, evolução e chefões. Trailer em português.', screenshots: 'Entre uma onda e outra', enlarge: 'Ampliar captura', close: 'Fechar', previous: 'Anterior', next: 'Próxima', pause: 'Pausar animações', resume: 'Reproduzir animações',
     ctaEyebrow: 'Sua próxima defesa começa aqui', ctaTitle: 'A horda vem aí.<br>Faça valer cada torre.', ctaText: 'Experimente os três primeiros mapas no navegador ou encare a jornada completa no Android.',
     privacy: 'Privacidade', contact: 'Contato', menu: 'Abrir navegação', skip: 'Pular para o conteúdo',
     blogEyebrow: 'Por trás do jogo', blogTitle: 'Do primeiro bloco à próxima onda.', blogDescription: 'Desenvolvimento, decisões e bastidores de Piggy Contra o Mundo.', read: 'Ler artigo', blogOriginal: 'Artigo em português', back: 'Voltar para o blog', empty: 'Novas histórias estão a caminho.',
     privacyTitle: 'Política de Privacidade', updated: 'Última atualização: 7 de outubro de 2026.',
-    music: 'Música: “Take a Chance” — Kevin MacLeod. Faixa editada e mixada com os sons do jogo.'
+    music: 'Música: “Five Armies” — Kevin MacLeod. Faixa editada para o trailer.'
   },
   en: {
     lang: 'en', name: 'Piggy against the World', tagline: 'One little pig. A whole horde. Your maze.',
     description: 'Command Piggy, build mazes of towers and time your abilities to face the hordes and turn defeated bosses into allies.',
     nav: ['The game', 'Arsenal', 'Worlds', 'Gameplay', 'Blog'], play: 'Available on Google Play', playShort: 'Google Play', demo: 'Play the free demo', demoNote: 'In your browser · the first 3 maps',
     hero: ['One little pig.', 'A whole horde.', 'Your maze.'], eyebrow: '3D strategy. Chaos under control.', heroLabel: 'Your plan. Their path.', watch: 'See the game in action', scroll: 'Meet your next challenge',
-    trust: ['No ads', 'No in-app purchases', 'Progress saved on your device'],
+    launch: 'Out now on Android',
+    trust: ['One-time purchase', 'No ads', 'No in-app purchases', 'Progress saved on your device'],
     storyEyebrow: 'Small hero. Big decisions.', storyTitle: 'Build. Withstand. Conquer.',
     stories: [
       ['01', 'Every tower changes the path.', 'You pick the spot. Piggy runs over, builds the scaffolding and brings your strategy to life. Shape a maze that makes every shot count.'],
@@ -57,12 +59,12 @@ export const copy = {
       ['Classic', 'Build your maze, protect the portal and earn three stars on each map.'],
       ['Expedition', 'After completing Classic, take on a succession of champions, minibosses and bosses.']
     ],
-    gameplayEyebrow: 'Straight from the battlefield', gameplayTitle: 'Watch the chaos take shape.', gameplayIntro: 'Real gameplay, decisions in motion and a little pig with a lot on his plate.', trailer: 'Watch the full trailer', trailerNote: '70 seconds of building, abilities and bosses. Trailer in Portuguese.', screenshots: 'Between one wave and the next', enlarge: 'Enlarge screenshot', close: 'Close', previous: 'Previous', next: 'Next', pause: 'Pause animations', resume: 'Play animations',
+    gameplayEyebrow: 'Straight from the battlefield', gameplayTitle: 'Watch the chaos take shape.', gameplayIntro: 'Real gameplay, decisions in motion and a little pig with a lot on his plate.', trailer: 'Watch the launch trailer', trailerNote: '41 seconds of strategy, upgrades and bosses. Trailer in Portuguese.', screenshots: 'Between one wave and the next', enlarge: 'Enlarge screenshot', close: 'Close', previous: 'Previous', next: 'Next', pause: 'Pause animations', resume: 'Play animations',
     ctaEyebrow: 'Your next defense starts here', ctaTitle: 'The horde is coming.<br>Make every tower count.', ctaText: 'Try the first three maps in your browser, or take on the full journey on Android.',
     privacy: 'Privacy', contact: 'Contact', menu: 'Open navigation', skip: 'Skip to content',
     blogEyebrow: 'Behind the game', blogTitle: 'From the first block to the next wave.', blogDescription: 'Development, decisions and the making of Piggy against the World.', read: 'Read article', blogOriginal: 'Article in Portuguese', back: 'Back to the blog', empty: 'New stories are on the way.',
     privacyTitle: 'Privacy Policy', updated: 'Last updated: October 7, 2026.',
-    music: 'Music: “Take a Chance” — Kevin MacLeod. Edited and mixed with game sound effects.'
+    music: 'Music: “Five Armies” — Kevin MacLeod. Edited for the trailer.'
   }
 };
 export const maps = [
